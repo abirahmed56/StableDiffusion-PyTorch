@@ -5,7 +5,6 @@ import os
 import numpy as np
 from tqdm import tqdm
 from torch.optim import Adam
-from dataset.mnist_dataset import MnistDataset
 from dataset.celeb_dataset import CelebDataset
 from torch.utils.data import DataLoader
 from models.unet_base import Unet
@@ -37,7 +36,6 @@ def train(args):
                                      beta_end=diffusion_config['beta_end'])
     
     im_dataset_cls = {
-        'mnist': MnistDataset,
         'celebhq': CelebDataset,
     }.get(dataset_config['name'])
     

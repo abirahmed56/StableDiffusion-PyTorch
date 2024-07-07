@@ -10,7 +10,6 @@ from models.vqvae import VQVAE
 from models.lpips import LPIPS
 from models.discriminator import Discriminator
 from torch.utils.data.dataloader import DataLoader
-from dataset.mnist_dataset import MnistDataset
 from dataset.celeb_dataset import CelebDataset
 from torch.optim import Adam
 from torchvision.utils import make_grid
@@ -45,7 +44,6 @@ def train(args):
                   model_config=autoencoder_config).to(device)
     # Create the dataset
     im_dataset_cls = {
-        'mnist': MnistDataset,
         'celebhq': CelebDataset,
     }.get(dataset_config['name'])
     

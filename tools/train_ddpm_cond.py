@@ -3,7 +3,6 @@ import argparse
 import numpy as np
 from tqdm import tqdm
 from torch.optim import Adam
-from dataset.mnist_dataset import MnistDataset
 from dataset.celeb_dataset import CelebDataset
 from torch.utils.data import DataLoader
 from models.unet_cond_base import Unet
@@ -58,7 +57,6 @@ def train(args):
                 empty_text_embed = get_text_representation([''], text_tokenizer, text_model, device)
             
     im_dataset_cls = {
-        'mnist': MnistDataset,
         'celebhq': CelebDataset,
     }.get(dataset_config['name'])
     
